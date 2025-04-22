@@ -2,12 +2,12 @@ pipeline {
     agent any
 
     environment {
-        AWS_ACCOUNT_ID = 'your_aws_account_id' // Replace with your AWS Account ID
-        AWS_REGION = 'your_aws_region'         // e.g., 'us-east-1'
-        IMAGE_REPO_NAME = 'java-webapp'
+        AWS_ACCOUNT_ID = '767397778787'
+        AWS_REGION = 'ap-south-1'
+        IMAGE_REPO_NAME = 'java-app'
         IMAGE_TAG = 'latest'
-        ECR_REGISTRY = "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com"
-        REPOSITORY_URI = "${ECR_REGISTRY}/${IMAGE_REPO_NAME}"
+        ECR_REGISTRY = "767397778787.dkr.ecr.ap-south-1.amazonaws.com"
+        REPOSITORY_URI = "767397778787.dkr.ecr.ap-south-1.amazonaws.com/docker-img"
     }
 
     stages {
@@ -38,7 +38,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh 'docker run -d --name java-webapp-container2 -p 8080:8080 $REPOSITORY_URI:$IMAGE_TAG'
+                sh 'docker run -d --name java-app-container -p 8081:8080 $REPOSITORY_URI:$IMAGE_TAG'
             }
         }
     }
