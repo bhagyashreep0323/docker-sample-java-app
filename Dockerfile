@@ -1,7 +1,7 @@
-FROM maven
+FROM maven:3.9.9-eclipse-temurin-17
 
-COPY . /app
+RUN apt update -y && git clone https://github.com/bhagyashreep032/docker-sample-java-webapp.git
 
-RUN cd /app && mvn package
+RUN cd docker-sample-java-webapp && mvn clean package
 
-ENTRYPOINT ["java", "-jar", "/app/target/demo-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "docker-sample-java-webapp/target/demo-0.0.1-SNAPSHOT.jar"]
