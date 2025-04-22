@@ -4,4 +4,4 @@ RUN apt update -y && git clone https://github.com/bhagyashreep0323/docker-sample
 
 RUN cd docker-sample-java-app && mvn clean package
 
-CMD ["java", "-jar", "docker-sample-java-webapp/target/demo-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "docker-sample-java-app/target/demo-0.0.1-SNAPSHOT.jar"]
