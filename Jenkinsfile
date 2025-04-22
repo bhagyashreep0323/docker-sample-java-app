@@ -4,8 +4,8 @@ pipeline {
     environment {
         AWS_ACCOUNT_ID = '767397778787'
         AWS_REGION = 'ap-south-1'
-        IMAGE_REPO_NAME = 'java-app'
-        IMAGE_TAG = 'latest'
+        IMAGE_REPO_NAME = 'java-app1'
+        IMAGE_TAG = 'ver1'
         ECR_REGISTRY = "767397778787.dkr.ecr.ap-south-1.amazonaws.com"
         REPOSITORY_URI = "767397778787.dkr.ecr.ap-south-1.amazonaws.com/docker-img"
     }
@@ -38,7 +38,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh 'docker run -d --name java-app-container -p 8081:8080 $REPOSITORY_URI:$IMAGE_TAG'
+                sh 'docker run -d --name java-app-container1 -p 8081:8080 $REPOSITORY_URI:$IMAGE_TAG'
             }
         }
     }
